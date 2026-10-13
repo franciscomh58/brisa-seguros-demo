@@ -1,0 +1,62 @@
+<div class="container blog-page">
+  <a routerLink="/home" class="back-link"><app-icon name="arrow-left" /> Volver al home</a>
+  <section class="blog-intro" aria-labelledby="blog-title">
+    <div>
+      <p class="eyebrow">IDEAS PARA TUS PLANES</p>
+      <h1 id="blog-title">Nuestro blog</h1>
+    </div>
+    <p>
+      Historias, preguntas e ideas para mirar con más calma lo que quieres cuidar. Contenido
+      original de una marca ficticia, pensado para explorar.
+    </p>
+  </section>
+  <section aria-labelledby="articles-title">
+    <div class="articles-heading">
+      <h2 id="articles-title">Para seguir descubriendo</h2>
+      <span>4 artículos</span>
+    </div>
+    <div class="articles-grid">
+      @for (post of blogPosts; track post.slug) {
+        <article class="article-card" [attr.aria-labelledby]="'article-' + post.slug">
+          <div class="article-cover">
+            <img
+              [src]="post.image.src"
+              [alt]="post.image.alt"
+              [width]="post.image.width"
+              [height]="post.image.height"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="article-copy">
+            <div class="article-meta">
+              <span class="demo-tag">{{ post.category }}</span>
+              <time [attr.datetime]="post.published">{{ post.publishedLabel }}</time>
+            </div>
+            <h3 [id]="'article-' + post.slug">{{ post.title }}</h3>
+            <p class="article-summary">{{ post.summary }}</p>
+            <div class="article-actions">
+              <a
+                [routerLink]="'/blog/' + post.slug"
+                class="button button-small"
+                [attr.aria-label]="'Leer artículo: ' + post.title"
+              >
+                Leer artículo <app-icon name="arrow-right" />
+              </a>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+  <aside class="editorial-notice" aria-labelledby="editorial-title">
+    <app-icon name="shield" />
+    <div>
+      <h2 id="editorial-title">Lecturas de demostración</h2>
+      <p>
+        Los artículos y escenarios de Brisa son ficticios. Ofrecen contexto para recorrer este
+        sitio; no sustituyen asesoría profesional ni describen condiciones de una aseguradora real.
+      </p>
+    </div>
+  </aside>
+</div>

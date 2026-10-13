@@ -1,0 +1,23 @@
+<div class="insurance-grid">
+  @for (product of products.slice(0, limit()); track product.slug) {
+    <a class="insurance-card" [routerLink]="'/seguros/' + product.slug">
+      <div class="insurance-image">
+        <img
+          [src]="'/images/seguros/' + product.slug + '.webp'"
+          [alt]="product.imageAlt"
+          width="1586"
+          height="992"
+          loading="lazy"
+          decoding="async"
+        />
+        <span class="insurance-category">{{ product.category }}</span>
+        <span class="insurance-arrow"><app-icon name="arrow-up-right" /></span>
+      </div>
+      <div class="insurance-copy">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <span class="card-link">Explorar este seguro <app-icon name="arrow-right" /></span>
+      </div>
+    </a>
+  }
+</div>

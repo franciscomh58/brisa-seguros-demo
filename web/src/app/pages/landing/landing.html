@@ -1,0 +1,105 @@
+<div class="landing-wrap">
+  <section class="campaign-hero" aria-labelledby="campaign-title">
+    <img
+      class="campaign-photo"
+      src="/images/brisa-coast.webp"
+      alt="Una familia camina junta junto al mar al atardecer, imagen ilustrativa generada"
+      width="1536"
+      height="1024"
+      fetchpriority="high"
+    />
+    <div class="campaign-shade"></div>
+    @if (motionAllowed()) {
+      <button type="button" class="motion-control" (click)="toggleMotion()">
+        {{ paused() ? 'Reanudar movimiento' : 'Pausar movimiento' }}
+      </button>
+    }
+    <div class="campaign-copy">
+      <p class="eyebrow light"><span class="tiny-line"></span> TU TRANQUILIDAD, PRIMERO</p>
+      <h1 id="campaign-title">Hay mucho<br />por vivir.<br /><span>Vamos contigo.</span></h1>
+      <p class="hero-description">
+        Tú disfruta lo que importa.<br />Nosotros imaginamos una forma más simple<br
+          class="desktop-break"
+        />
+        de ayudarte a cuidarlo.
+      </p>
+      <div class="hero-actions">
+        <a routerLink="/home" class="button button-light"
+          >Explorar seguros <app-icon name="arrow-right" /></a
+        ><a routerLink="/home" fragment="nosotros" class="text-link light"
+          >Conoce Brisa <app-icon name="arrow-up-right"
+        /></a>
+      </div>
+      <p class="campaign-footnote">
+        <app-icon name="shield" /> Una experiencia de seguros, pensada para ti.
+      </p>
+    </div>
+    <div class="campaign-caption">
+      <span class="caption-icon"><app-icon name="heart" /></span>
+      <div><strong>La vida se disfruta mejor</strong><span>cuando cuidas lo que amas.</span></div>
+    </div>
+    <span class="campaign-index">01 / MÁS VIDA, MENOS PREOCUPACIONES</span>
+  </section>
+  <div class="promise-strip">
+    <span><app-icon name="leaf" /> Simple de entender</span
+    ><span><app-icon name="heart" /> Cerca de lo que importa</span
+    ><span><app-icon name="shield" /> Pensado para acompañarte</span>
+  </div>
+</div>
+<section class="container section-space" aria-labelledby="protection-title">
+  <div class="section-heading" data-motion-reveal>
+    <div>
+      <p class="eyebrow">PROTECCIÓN A TU MANERA</p>
+      <h2 id="protection-title">Cada vida es distinta.<br />Tu protección también.</h2>
+    </div>
+    <p>
+      Tu salud, tu movilidad, tu empresa.<br />
+      Encuentra una idea de protección<br />
+      para eso que hace única tu vida.
+    </p>
+  </div>
+  <div data-motion-reveal>
+    <app-insurance-catalog [limit]="3" />
+  </div>
+  <a routerLink="/home" fragment="servicios" class="text-link catalog-more"
+    >Ver todos los seguros <app-icon name="arrow-right"
+  /></a>
+  <p class="catalog-note">
+    Brisa es una identidad ficticia. Explora seguros, paquetes e imágenes ilustrativas creados para
+    esta demostración.
+  </p>
+</section>
+<section class="container care-panel" aria-labelledby="care-title">
+  <div class="care-art" aria-hidden="true">
+    <span class="orbit orbit-one"></span><span class="orbit orbit-two"></span
+    ><span class="care-symbol"><app-icon name="shield" /></span
+    ><span class="care-small small-one"><app-icon name="car" /></span
+    ><span class="care-small small-two"><app-icon name="heart" /></span
+    ><span class="care-small small-three"><app-icon name="home" /></span>
+  </div>
+  <div class="care-copy" data-motion-reveal>
+    <p class="eyebrow">SEGUROS, SIN COMPLICACIONES</p>
+    <h2 id="care-title">
+      Que lo importante<br />
+      sea vivir.
+    </h2>
+    <p>
+      Imaginamos una experiencia clara, cercana y fácil de usar. Explora opciones, resuelve dudas y
+      descubre cómo podría sentirse tu próximo seguro.
+    </p>
+    <a routerLink="/home" fragment="filosofia" class="text-link"
+      >Así te acompañamos <app-icon name="arrow-right"
+    /></a>
+  </div>
+</section>
+<section class="container bottom-cta" aria-labelledby="next-title" data-motion-reveal>
+  <div>
+    <p class="eyebrow">EL PRIMER PASO ES MUY SIMPLE</p>
+    <h2 id="next-title">¿Qué quieres cuidar hoy?</h2>
+    <p>
+      Elige un seguro, configura un escenario de ejemplo y descubre cómo funciona nuestra
+      simulación.
+    </p>
+  </div>
+  <a routerLink="/cotizador" class="button">Probar el cotizador <app-icon name="arrow-right" /></a>
+</section>

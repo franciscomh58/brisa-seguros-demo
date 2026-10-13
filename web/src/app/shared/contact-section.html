@@ -1,0 +1,60 @@
+<section
+  id="contacto"
+  tabindex="-1"
+  class="container contact-section"
+  aria-labelledby="contact-title"
+>
+  <div>
+    <p class="eyebrow">HABLEMOS</p>
+    <h2 id="contact-title">Tu próximo paso<br />empieza con claridad.</h2>
+    <p class="section-description">
+      Explora cómo podría comenzar una conversación con Brisa. Los canales y campos de esta sección
+      son ejemplos; no conectan con un equipo de atención.
+    </p>
+    <dl class="contact-channels">
+      <div>
+        <dt>Correo</dt>
+        <dd>hola@brisa.example.invalid</dd>
+      </div>
+      <div>
+        <dt>Teléfono</dt>
+        <dd>Canal telefónico no disponible en este demo</dd>
+      </div>
+      <div>
+        <dt>Horario de atención</dt>
+        <dd>Horario ilustrativo: lunes a viernes, de 9:00 a 18:00</dd>
+      </div>
+    </dl>
+  </div>
+  <form
+    class="contact-form"
+    autocomplete="off"
+    (submit)="preventSubmit($event)"
+    aria-labelledby="form-title"
+    aria-describedby="contact-demo-note"
+  >
+    <h3 id="form-title">Prueba los campos · demo</h3>
+    <p id="contact-demo-note">
+      Usa únicamente datos inventados. La aplicación no envía ni guarda estos campos.
+    </p>
+    <div class="contact-field">
+      <label for="contact-name">Nombre</label
+      ><input id="contact-name" type="text" maxlength="100" placeholder="Nombre de ejemplo" />
+    </div>
+    <div class="contact-field">
+      <label for="contact-email">Correo electrónico</label
+      ><input id="contact-email" type="email" maxlength="254" placeholder="demo@example.invalid" />
+    </div>
+    <div class="contact-field">
+      <label for="contact-phone">Teléfono</label
+      ><input id="contact-phone" type="tel" maxlength="25" placeholder="Teléfono de ejemplo" />
+    </div>
+    <button type="button" class="button" disabled aria-describedby="contact-demo-note">
+      Envío deshabilitado en demo
+    </button>
+    <p class="form-legal-note">
+      Este espacio muestra la interfaz de contacto. No genera solicitudes ni permite reportar
+      emergencias o siniestros.
+    </p>
+  </form>
+</section>

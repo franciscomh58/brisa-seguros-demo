@@ -1,0 +1,248 @@
+<section class="container quote-page" aria-labelledby="quote-title">
+  <a routerLink="/home" class="back-link"
+    ><app-icon name="arrow-left" /> Volver a nuestros seguros</a
+  >
+  <div class="quote-layout">
+    <aside class="quote-aside">
+      <p class="eyebrow">COTIZADOR DE DEMOSTRACIÓN</p>
+      <h1 id="quote-title">Tu protección.<br />Tus planes.<br /><span>Tu tranquilidad.</span></h1>
+      <p>Explora un escenario ficticio para cualquiera de nuestros seguros.</p>
+      <ol class="step-list" aria-label="Progreso del cotizador">
+        <li
+          [class.current]="step() === 1"
+          [class.done]="step() > 1"
+          [attr.aria-current]="step() === 1 ? 'step' : null"
+        >
+          <span>01</span>
+          <div>Tu escenario<small>Elige seguro y opciones de ejemplo</small></div>
+        </li>
+        <li
+          [class.current]="step() === 2"
+          [class.done]="step() > 2"
+          [attr.aria-current]="step() === 2 ? 'step' : null"
+        >
+          <span>02</span>
+          <div>Tus opciones<small>Compara marcas y paquetes ficticios</small></div>
+        </li>
+        <li [class.current]="step() === 3" [attr.aria-current]="step() === 3 ? 'step' : null">
+          <span>03</span>
+          <div>Tu simulación<small>Un importe fijo de muestra</small></div>
+        </li>
+      </ol>
+      <div class="privacy-note">
+        <app-icon name="shield" /><span
+          >No pedimos datos personales.<br />Las respuestas sólo viven en esta pantalla.</span
+        >
+      </div>
+    </aside>
+    <div class="quote-form-card">
+      <div class="quote-form-header">
+        <span class="demo-tag">Modo demo</span><span>PASO {{ step() }} DE 3</span>
+      </div>
+      <div class="progress-track" aria-hidden="true">
+        <span [style.width.%]="(step() / 3) * 100"></span>
+      </div>
+      @if (step() < 3) {
+        <form [formGroup]="form" (ngSubmit)="step() === 1 ? next() : quote()">
+          @if (step() === 1) {
+            <fieldset>
+              <legend #stepTitle tabindex="-1">¿Qué quieres proteger?</legend>
+              <p class="field-description" id="insurance-help">
+                Elige un seguro y completa un escenario de ejemplo.
+              </p>
+              <div class="vehicle-options">
+                @for (product of products; track product.slug) {
+                  <label class="selection-card vehicle-option"
+                    ><input
+                      type="radio"
+                      name="insuranceSlug"
+                      formControlName="insuranceSlug"
+                      [value]="product.slug"
+                      aria-describedby="insurance-help insurance-error" /><span
+                      class="vehicle-symbol"
+                      ><app-icon name="shield"
+                    /></span>
+                    <span class="option-copy"
+                      ><strong>{{ product.name }}</strong
+                      ><small>{{ product.category }}</small></span
+                    ><span class="radio-mark" aria-hidden="true"></span
+                  ></label>
+                }
+              </div>
+              <p id="insurance-error" class="field-error" aria-live="polite">
+                @if (form.controls.insuranceSlug.touched && form.controls.insuranceSlug.invalid) {
+                  Elige un seguro del catálogo para comenzar.
+                }
+              </p>
+            </fieldset>
+            @if (insuranceSlug()) {
+              <fieldset formGroupName="answers">
+                <legend>Un escenario inventado</legend>
+                <p class="field-description">
+                  Usa únicamente las opciones ficticias. Ninguna respuesta modifica el importe.
+                </p>
+                @for (field of fields(); track field.id) {
+                  <div class="quote-field">
+                    <label [for]="'answer-' + field.id">
+                      {{ field.label }}{{ field.optional ? ' (opcional)' : '' }}
+                    </label>
+                    <select
+                      [id]="'answer-' + field.id"
+                      [formControlName]="field.id"
+                      [attr.aria-invalid]="
+                        form.controls.answers.controls[field.id].touched &&
+                        form.controls.answers.controls[field.id].invalid
+                          ? 'true'
+                          : null
+                      "
+                      [attr.aria-describedby]="'answer-error-' + field.id"
+                    >
+                      <option value="">Elige una opción</option>
+                      @for (option of field.options; track option.id) {
+                        <option [value]="option.id">{{ option.label }}</option>
+                      }
+                    </select>
+                    <span [id]="'answer-error-' + field.id" class="field-error" aria-live="polite">
+                      @if (
+                        form.controls.answers.controls[field.id].touched &&
+                        form.controls.answers.controls[field.id].invalid
+                      ) {
+                        @if (field.optional) {
+                          Elige una opción válida o déjala sin responder.
+                        } @else {
+                          Selecciona una opción válida para continuar.
+                        }
+                      }
+                    </span>
+                  </div>
+                }
+              </fieldset>
+            } @else {
+              <p class="insurance-empty-state">Elige un seguro del catálogo para comenzar.</p>
+            }
+            <button type="submit" class="button full-width">
+              Elegir mis opciones <app-icon name="arrow-right" />
+            </button>
+          } @else {
+            @if (insurance(); as product) {
+              <fieldset>
+                <legend #stepTitle tabindex="-1">Elige una aseguradora ficticia.</legend>
+                <p class="field-description" id="insurer-help">
+                  Las marcas son inventadas para esta demostración.
+                </p>
+                <div class="vehicle-options">
+                  @for (insurer of insurerOptions; track insurer.id) {
+                    <label class="selection-card insurer-option"
+                      ><input
+                        type="radio"
+                        name="insurerId"
+                        formControlName="insurerId"
+                        [value]="insurer.id"
+                        aria-describedby="insurer-help insurer-error" /><img
+                        [src]="insurer.logo"
+                        [alt]="insurer.alt"
+                        width="360"
+                        height="112" /><span class="option-copy"
+                        ><strong>{{ insurer.name }}</strong
+                        ><small>Aseguradora ficticia de demostración</small></span
+                      ><span class="radio-mark" aria-hidden="true"></span
+                    ></label>
+                  }
+                </div>
+                <p id="insurer-error" class="field-error" aria-live="polite">
+                  @if (form.controls.insurerId.touched && form.controls.insurerId.invalid) {
+                    Elige una aseguradora ficticia.
+                  }
+                </p>
+              </fieldset>
+              <fieldset>
+                <legend>Un paquete para {{ product.name.toLowerCase() }}</legend>
+                <p class="field-description" id="package-help">
+                  Los beneficios son ilustrativos y no representan condiciones reales.
+                </p>
+                <div class="package-options">
+                  @for (packageOption of packageOptions(); track packageOption.id) {
+                    <label class="selection-card package-option"
+                      ><input
+                        type="radio"
+                        name="packageId"
+                        formControlName="packageId"
+                        [value]="packageOption.id"
+                        aria-describedby="package-help package-error" /><span class="option-copy"
+                        ><strong>{{ packageOption.name }}</strong
+                        ><small>{{ packageOption.description }}</small>
+                        <span class="package-benefits"
+                          ><span><app-icon name="check" />{{ packageOption.benefit }}</span></span
+                        ></span
+                      ><span class="radio-mark" aria-hidden="true"></span
+                    ></label>
+                  }
+                </div>
+                <p id="package-error" class="field-error" aria-live="polite">
+                  @if (form.controls.packageId.touched && form.controls.packageId.invalid) {
+                    Elige un paquete para continuar.
+                  }
+                </p>
+              </fieldset>
+            }
+            <div class="quote-buttons">
+              <button type="button" class="button button-outline" (click)="back()">
+                <app-icon name="arrow-left" /> Atrás</button
+              ><button type="submit" class="button">
+                Ver mi simulación <app-icon name="arrow-right" />
+              </button>
+            </div>
+          }
+        </form>
+      } @else if (result(); as result) {
+        <div class="quote-result" role="status" aria-live="polite">
+          <span class="result-icon"><app-icon name="check" /></span>
+          <p class="eyebrow">TU RESULTADO DE EJEMPLO</p>
+          <h2 #stepTitle tabindex="-1">Un escenario para explorar.</h2>
+          <p>
+            {{ resultInsurance()?.name }} · {{ resultInsurer()?.name }} ·
+            {{ resultPackage()?.name }}
+          </p>
+          @if (resultInsurer(); as insurer) {
+            <img
+              class="result-logo"
+              [src]="insurer.logo"
+              [alt]="insurer.alt"
+              width="360"
+              height="112"
+            />
+          }
+          <ul class="result-answers">
+            @for (answer of result.answers; track answer.fieldId) {
+              <li>
+                <strong>{{ answer.label }}:</strong> {{ answer.value }}
+              </li>
+            }
+          </ul>
+          <div class="result-price">
+            {{ result.amount | currency: 'MXN' : 'symbol-narrow' : '1.0-0' }}<span>MXN / mes</span>
+          </div>
+          <p class="price-label">
+            Importe fijo de muestra por escenario; no se calcula con tus respuestas ni representa
+            una prima individual o colectiva real.
+          </p>
+          <ul class="result-benefits">
+            @if (resultBenefit(); as benefit) {
+              <li><app-icon name="check" />{{ benefit }}</li>
+            }
+          </ul>
+        </div>
+        <div class="result-actions">
+          <button type="button" class="button full-width" (click)="edit()">
+            Editar mi simulación <app-icon name="arrow-right" /></button
+          ><button type="button" class="text-link reset-link" (click)="reset()">
+            Empezar de nuevo
+          </button>
+        </div>
+      }
+      <p class="simulation-notice">
+        <app-icon name="sparkles" /><span>{{ notice }}</span>
+      </p>
+    </div>
+  </div>
+</section>

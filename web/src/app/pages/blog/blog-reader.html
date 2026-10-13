@@ -1,0 +1,64 @@
+<div class="container reading-page">
+  <a routerLink="/blog" class="back-link"><app-icon name="arrow-left" /> Todos los artículos</a>
+  <article aria-labelledby="reading-title">
+    <header class="reading-header">
+      <p class="eyebrow">{{ post().category }} · Artículo de demostración</p>
+      <h1 id="reading-title">{{ post().title }}</h1>
+      <p class="reading-summary">{{ post().summary }}</p>
+      <div class="reading-meta">
+        <span>Por {{ post().author }}</span>
+        <span
+          >Publicado el
+          <time [attr.datetime]="post().published">{{ post().publishedLabel }}</time></span
+        >
+      </div>
+      <img
+        class="reading-cover"
+        [src]="post().image.src"
+        [alt]="post().image.alt"
+        [width]="post().image.width"
+        [height]="post().image.height"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </header>
+    <aside class="reading-context">
+      Artículo de demostración. Los personajes, paquetes y escenarios pertenecen al universo
+      ficticio de Brisa; no describen una oferta real.
+    </aside>
+    <div class="reading-body">
+      @for (section of post().sections; track section.heading) {
+        <section class="reading-section" [attr.aria-labelledby]="'section-' + $index">
+          <h2 [id]="'section-' + $index">{{ section.heading }}</h2>
+          @for (paragraph of section.paragraphs; track $index) {
+            <p>{{ paragraph }}</p>
+          }
+          @if (section.points.length) {
+            <ul>
+              @for (point of section.points; track $index) {
+                <li>{{ point }}</li>
+              }
+            </ul>
+          }
+        </section>
+      }
+    </div>
+    <footer class="reading-related">
+      <div>
+        <p class="eyebrow">SEGUIR EXPLORANDO</p>
+        <h2>Una lectura puede abrir nuevas preguntas.</h2>
+        <p>Explora un escenario ficticio relacionado con este artículo.</p>
+      </div>
+      <div class="reading-actions">
+        <a
+          [routerLink]="'/seguros/' + post().relatedInsuranceSlug"
+          class="button"
+          [attr.aria-label]="post().relatedInsuranceLabel"
+        >
+          {{ post().relatedInsuranceLabel }} <app-icon name="arrow-right" />
+        </a>
+        <a routerLink="/blog" class="text-link">Volver al blog</a>
+      </div>
+    </footer>
+  </article>
+</div>

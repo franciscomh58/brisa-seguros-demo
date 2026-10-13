@@ -1,0 +1,39 @@
+<header class="site-header" (keydown.escape)="closeMenu(menuToggle)">
+  <div class="header-inner container">
+    <a routerLink="/" class="brand" aria-label="Brisa seguros, inicio" (click)="open.set(false)"
+      ><span class="brand-mark"><app-icon name="shield" /></span
+      ><span>brisa<span class="brand-sub">SEGUROS</span></span></a
+    >
+    <button
+      #menuToggle
+      type="button"
+      class="mobile-toggle"
+      [attr.aria-expanded]="open()"
+      aria-controls="main-nav"
+      [attr.aria-label]="open() ? 'Cerrar menú' : 'Abrir menú'"
+      (click)="open.set(!open())"
+    >
+      <app-icon [name]="open() ? 'x' : 'menu'" />
+    </button>
+    <nav id="main-nav" class="main-nav" [class.is-open]="open()" aria-label="Navegación principal">
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="open.set(false)"
+        >Inicio</a
+      ><a routerLink="/home" fragment="servicios" (click)="open.set(false)">Nuestros seguros</a
+      ><a routerLink="/home" fragment="nosotros" (click)="open.set(false)">Quiénes somos</a
+      ><a
+        routerLink="/blog"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        (click)="open.set(false)"
+        >Blog</a
+      ><span class="demo-tag">Sitio demo</span
+      ><a routerLink="/cotizador" class="button button-small" (click)="open.set(false)"
+        >Simular seguro <app-icon name="arrow-right"
+      /></a>
+    </nav>
+  </div>
+</header>

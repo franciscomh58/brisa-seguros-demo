@@ -1,0 +1,140 @@
+<section class="container home-intro" aria-labelledby="home-title">
+  <div>
+    <p class="eyebrow">BIENVENIDO A BRISA</p>
+    <h1 id="home-title">Tus planes cambian.<br /><span>Te acompañamos.</span></h1>
+    <p>
+      Tu salud, tu movilidad, tu hogar y tu negocio. Explora distintas formas de pensar en lo que
+      quieres cuidar.
+    </p>
+    <a routerLink="/home" fragment="servicios" class="button"
+      >Explorar nuestros seguros <app-icon name="arrow-up-right"
+    /></a>
+  </div>
+  <div class="home-photo">
+    <img
+      src="/images/brisa-coast.webp"
+      alt="Una familia disfruta un paseo junto al mar, imagen ilustrativa generada"
+      width="1536"
+      height="1024"
+      fetchpriority="high"
+    />
+    <span class="photo-label"><app-icon name="leaf" /> Más momentos. Más tranquilidad.</span>
+  </div>
+</section>
+<section
+  id="servicios"
+  tabindex="-1"
+  class="container section-space"
+  aria-labelledby="services-title"
+>
+  <span id="productos" tabindex="-1"></span>
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">NUESTROS SEGUROS</p>
+      <h2 id="services-title">Lo que importa,<br />merece atención.</h2>
+    </div>
+    <p>
+      Tu salud, tu movilidad, tu hogar y tu negocio. Explora distintas formas de pensar en lo que
+      quieres cuidar.
+    </p>
+  </div>
+  <app-insurance-catalog />
+  <p class="catalog-note">
+    Brisa es una identidad ficticia. Explora seguros, paquetes e imágenes ilustrativas creados para
+    esta demostración.
+  </p>
+</section>
+<section id="nosotros" tabindex="-1" class="container about-section" aria-labelledby="about-title">
+  <div>
+    <p class="eyebrow">QUIÉNES SOMOS</p>
+    <h2 id="about-title">Cerca de las personas.<br /><span>Atentos a sus planes.</span></h2>
+  </div>
+  <div>
+    <p>
+      Brisa nace como una idea: hacer que una conversación sobre seguros sea más fácil de entender.
+      En este universo ficticio ponemos a las personas, sus planes y sus preguntas al centro de la
+      experiencia.
+    </p>
+    <p>
+      Reunimos ejemplos para la vida cotidiana y para los negocios en un solo lugar. Puedes explorar
+      el catálogo, comparar paquetes ilustrativos y probar una simulación sin contratar ni compartir
+      datos reales.
+    </p>
+    <span>Una marca ficticia para explorar posibilidades</span>
+  </div>
+</section>
+<section
+  id="filosofia"
+  tabindex="-1"
+  class="container philosophy-section"
+  aria-labelledby="philosophy-title"
+>
+  <p class="eyebrow">NUESTRA FILOSOFÍA</p>
+  <h2 id="philosophy-title">La confianza empieza<br />por entendernos.</h2>
+  <p class="section-description">
+    Creemos en explicar con claridad, escuchar antes de proponer y reconocer los límites de cada
+    opción. Estos principios dan forma a la experiencia Brisa.
+  </p>
+  <div class="values-grid">
+    <article class="value-card">
+      <span>01</span>
+      <h3>Claridad</h3>
+      <p>Explicar las opciones con lenguaje comprensible y sin ocultar sus condiciones.</p>
+    </article>
+    <article class="value-card">
+      <span>02</span>
+      <h3>Cercanía</h3>
+      <p>Escuchar las necesidades antes de proponer una alternativa.</p>
+    </article>
+    <article class="value-card">
+      <span>03</span>
+      <h3>Responsabilidad</h3>
+      <p>Compartir información revisada y reconocer los límites de cada propuesta.</p>
+    </article>
+    <article class="value-card">
+      <span>04</span>
+      <h3>Confianza</h3>
+      <p>Construir relaciones desde la transparencia y el respeto.</p>
+    </article>
+  </div>
+</section>
+<app-contact-section />
+<section id="preguntas" tabindex="-1" class="container faq-section">
+  <div>
+    <p class="eyebrow">TODO MÁS CLARO</p>
+    <h2>Una duda menos.<br />Un paso más.</h2>
+    <p>Lo que necesitas saber<br />sobre esta experiencia.</p>
+  </div>
+  <div class="faq-list">
+    <details>
+      <summary>¿Puedo cotizar o contratar aquí?<app-icon name="plus" /></summary>
+      <p>
+        Puedes explorar una simulación con opciones e importes ficticios. No es una cotización real
+        y no permite contratar ni pagar.
+      </p>
+    </details>
+    <details>
+      <summary>¿El formulario envía mis datos?<app-icon name="plus" /></summary>
+      <p>
+        No. El contacto está deshabilitado y la aplicación no envía ni persiste los valores de los
+        formularios. Prueba sólo con datos inventados.
+      </p>
+    </details>
+    <details>
+      <summary>¿Las aseguradoras y coberturas son reales?<app-icon name="plus" /></summary>
+      <p>
+        No. Brisa, sus aseguradoras de ejemplo y los paquetes forman parte de una demostración. Las
+        fotografías son ilustrativas.
+      </p>
+    </details>
+    <details>
+      <summary>¿Dónde encuentro ideas para seguir explorando?<app-icon name="plus" /></summary>
+      <p>
+        Visita el Blog para leer artículos originales sobre movilidad, hogar, salud y negocios
+        dentro del universo Brisa.
+        <a routerLink="/blog" class="text-link">Explorar el blog <app-icon name="arrow-right" /></a
+        >.
+      </p>
+    </details>
+  </div>
+</section>

@@ -1,0 +1,81 @@
+<article class="container insurance-detail-page">
+  <a routerLink="/home" fragment="servicios" class="text-link"
+    >Volver a nuestros seguros <app-icon name="arrow-right"
+  /></a>
+  <header class="insurance-detail-hero">
+    <div>
+      <p class="eyebrow">{{ product.category }}</p>
+      <h1>{{ product.name }}</h1>
+      <p>{{ product.description }}</p>
+      <a routerLink="/cotizador" [queryParams]="{ seguro: product.slug }" class="button"
+        >Simular este seguro <app-icon name="arrow-right"
+      /></a>
+    </div>
+    <img
+      [src]="'/images/seguros/' + product.slug + '.webp'"
+      [alt]="product.imageAlt"
+      width="1586"
+      height="992"
+      fetchpriority="high"
+    />
+  </header>
+  <aside class="editorial-notice">
+    <strong>Conoce este seguro · ejemplo ficticio</strong>
+    <p>
+      Este contenido presenta un escenario de demostración. Sus prestaciones y condiciones son
+      ilustrativas; no constituyen una póliza ni una oferta real. La imagen es generada.
+    </p>
+  </aside>
+  <nav class="detail-index" aria-label="Secciones de este seguro">
+    @for (section of sections; track section.id) {
+      <a [routerLink]="'/seguros/' + product.slug" [fragment]="section.id">{{ section.title }}</a>
+    }
+  </nav>
+  <div class="detail-content">
+    @for (section of sections; track section.id; let index = $index) {
+      <section
+        class="detail-section"
+        [id]="section.id"
+        tabindex="-1"
+        [attr.aria-labelledby]="section.id + '-title'"
+      >
+        <span class="detail-number">0{{ index + 1 }}</span>
+        <div>
+          <h2 [id]="section.id + '-title'">{{ section.title }}</h2>
+          @if (index === 0) {
+            <p>{{ product.brief }}</p>
+          }
+          @if (index === 1) {
+            <p>{{ product.audience }}</p>
+          }
+          @if (section.id === 'proceso') {
+            <ol class="detail-proposal">
+              @for (item of product.proposal[section.id]; track item) {
+                <li>{{ item }}</li>
+              }
+            </ol>
+          } @else {
+            <ul class="detail-proposal">
+              @for (item of product.proposal[section.id]; track item) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          }
+        </div>
+      </section>
+    }
+  </div>
+  <section class="bottom-cta">
+    <div>
+      <p class="eyebrow">PRUEBA UN ESCENARIO</p>
+      <h2>Tu siguiente paso, en una simulación.</h2>
+      <p>
+        Elige una aseguradora y un paquete ficticios para explorar este seguro. No necesitas datos
+        reales.
+      </p>
+    </div>
+    <a routerLink="/cotizador" [queryParams]="{ seguro: product.slug }" class="button"
+      >Simular este seguro <app-icon name="arrow-right"
+    /></a>
+  </section>
+</article>
