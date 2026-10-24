@@ -15,7 +15,7 @@ para poder integrarlo también a un sitio de portafolio personal.
 
 ## Enlaces
 
-- [Ver demo](https://delightful-wave-0788a5310.3.azurestaticapps.net/).
+- [Ver demo](https://demo-brisa.fmejiadev.com/).
 - [Ver código](https://github.com/franciscomh58/brisa-seguros-demo).
 
 Ambos destinos se abrieron en navegador sin iniciar sesión el 2026-10-23. El enlace al demo

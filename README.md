@@ -7,7 +7,7 @@ reales.
 
 ## Demo y presentación del proyecto
 
-[Ver demo](https://delightful-wave-0788a5310.3.azurestaticapps.net/) ·
+[Ver demo](https://demo-brisa.fmejiadev.com/) ·
 [Caso de estudio](docs/portafolio/caso-de-estudio.md) ·
 [Ficha para portafolio](docs/portafolio/tarjeta.md)
 

@@ -6,7 +6,7 @@ Su propósito es mostrar cómo una interfaz puede acompañar a una persona desde
 la exploración de un producto hasta un resultado de ejemplo, manteniendo
 visibles los límites de la demostración.
 
-[Ver demo](https://delightful-wave-0788a5310.3.azurestaticapps.net/) ·
+[Ver demo](https://demo-brisa.fmejiadev.com/) ·
 [Ver código](https://github.com/franciscomh58/brisa-seguros-demo)
 
 ![Portada de Brisa con el mensaje «Hay mucho por vivir» y acceso al catálogo.](capturas/brisa-portada.webp)

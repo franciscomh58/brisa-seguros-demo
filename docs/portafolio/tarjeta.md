@@ -9,7 +9,7 @@ diseño responsive y la navegación accesible.
 **Tecnologías:** Angular · TypeScript · Tailwind CSS.
 
 [Ver caso de estudio](caso-de-estudio.md) ·
-[Ver demo](https://delightful-wave-0788a5310.3.azurestaticapps.net/) ·
+[Ver demo](https://demo-brisa.fmejiadev.com/) ·
 [Ver código](https://github.com/franciscomh58/brisa-seguros-demo)
 
 Proyecto ficticio de portafolio. Las aseguradoras, escenarios e importes son
