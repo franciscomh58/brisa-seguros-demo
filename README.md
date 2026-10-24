@@ -5,6 +5,19 @@ cotización y cuatro artículos originales. Brisa, las aseguradoras, escenarios
 y precios son ejemplos; no representan compañías, productos ni cotizaciones
 reales.
 
+## Demo y presentación del proyecto
+
+[Ver demo](https://delightful-wave-0788a5310.3.azurestaticapps.net/) ·
+[Caso de estudio](docs/portafolio/caso-de-estudio.md) ·
+[Ficha para portafolio](docs/portafolio/tarjeta.md)
+
+![Portada de Brisa con el mensaje «Hay mucho por vivir» y acceso al catálogo.](docs/portafolio/capturas/brisa-portada.webp)
+
+El [paquete de presentación](docs/portafolio/README.md) contiene el caso de
+estudio, cuatro capturas reales y las indicaciones para incorporarlo a un
+portafolio personal. Describe el recorrido, las decisiones técnicas y los
+límites de la demostración.
+
 ## Stack
 
 Angular standalone 22, Tailwind CSS 4 y renderizado del lado del cliente (CSR).
