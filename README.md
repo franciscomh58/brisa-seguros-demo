@@ -62,3 +62,9 @@ contratación, pagos ni tarifas reales. No ingreses datos personales reales.
 
 El build CSR requiere que el alojamiento futuro redirija las rutas de la
 aplicación a `index.html`. La compilación local no constituye una publicación.
+
+## Apóyame
+
+Si te gusta este proyecto, puedes invitarme a un café:
+
+<a href="https://www.buymeacoffee.com/fmejiadev" target="_blank" rel="noopener noreferrer"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee" width="150" height="40"></a>
