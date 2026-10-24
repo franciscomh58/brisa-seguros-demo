@@ -1,0 +1,14 @@
+{
+  "routes": [
+    {
+      "route": "/cotizador",
+      "methods": ["GET", "HEAD"],
+      "rewrite": "/index.html"
+    },
+    {
+      "route": "/cotizador/",
+      "methods": ["GET", "HEAD"],
+      "rewrite": "/index.html"
+    }
+  ]
+}
